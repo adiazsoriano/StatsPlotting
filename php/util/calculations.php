@@ -79,8 +79,19 @@ function findStandardDeviation(array $numbers, bool $isSampleSD = false) {
     return sqrt($sum);
 }
 
-function toJSArr() : string {
-    return "";
+function toJSArr(string $list) : string {
+    $list = trim($list);
+    $expList = explode(" ", $list);
+    $nList = "[";
+
+    for($i = 0; $i < count($expList); $i++) {
+        $nList .= $expList[$i];
+        if($i < count($expList) - 1) {
+            $nList .= ",";
+        }
+    }
+
+    return $nList . "]";
 }
 
 ?>
