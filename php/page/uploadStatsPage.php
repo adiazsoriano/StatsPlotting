@@ -26,10 +26,6 @@
                         <a class="nav-link" href="inputStatsPage.php">Input Data</a>
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signUpPage.php">Sign up</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logInPage.php">Log in</a>
                     </li>
                 </ul>
             </div>
