@@ -1,4 +1,5 @@
-.graphdiv, .inputdiv {
+.graphdiv,
+.inputdiv {
     outline: 5px solid black;
     border-radius: 2px;
     padding: 10px;

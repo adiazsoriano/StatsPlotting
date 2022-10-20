@@ -1,14 +1,35 @@
-<?php 
+<?php
 
 require_once "../util/calculations.php";
 
-?>
+if (isset($_POST['submit'])) {
+    $file = $_FILES['file'];
 
-<html>
-    <head>
-        <title>Uploading Stats</title>
-        <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
-        
-    </head>
+    $fileName = $_FILES['file']['name'];
+    $fileTmpName = $_FILES['file']['tmp_name'];
+    $fileSize = $_FILES['file']['size'];
+    $fileError = $_FILES['file']['error'];
+    $fileType = $_FILES['file']['type'];
 
-</html>
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('txt', 'cvs');
+
+    if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 1000000) {
+                $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+                $fileDestination = 'uploads/' . $fileNameNew;
+                move_uploaded_file($fileTmpName, $fileDestination);
+                header("Location: ../../index.php?uploadsuccess");
+            } else {
+                echo "Your file is too big!";
+            }
+        } else {
+            echo "There was an error uploading your file!";
+        }
+    } else {
+        echo "you cannot upload files of this type!";
+    }
+}
