@@ -23,10 +23,6 @@
                         <a class="nav-link" href="./php/page/inputStatsPage.php">Input Data</a>
                     <li class="nav-item">
                         <a class="nav-link" href="./php/page/uploadStatsPage.php">Upload Data</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./php/page/signUpPage.php">Sign up</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./php/page/logInPage.php">Log in</a>
                     </li>
                 </ul>
             </div>
