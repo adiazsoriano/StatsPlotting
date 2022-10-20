@@ -4,8 +4,6 @@ require_once "../util/calculations.php";
 
 <html>
     <head>
-        <title>Inputting Stats</title>
-        <style><?php require "../../CSS/main.css"; ?></style>
         <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
         <script>
             var x = <?php echo !empty($_POST["compute"]) ? toJSArr($_POST["numList"]) : "[]";  ?>;
@@ -29,7 +27,7 @@ require_once "../util/calculations.php";
         <div <?php if(!empty($_POST["compute"])) {echo "class='graphdiv' id='graph'";} ?>></div>
         <div class="inputdiv">
             <form method="POST" onsubmit="return notifyUser()">
-                <fieldset class="fieldsetinputdiv">
+                <fieldset>
                     <legend>Enter your numbers.</legend>
 
                     <div> 
