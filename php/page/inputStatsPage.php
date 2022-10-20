@@ -25,6 +25,8 @@
                         <a class="nav-link" href="inputStatsPage.php">Input Data</a>
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="databaseStatsPage.php">Database Data</a>
                     </li>
                 </ul>
             </div>
