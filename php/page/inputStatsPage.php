@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Stats Visualization</title>
-    <link rel="stylesheet" href="../CSS/background.css">
+    <link rel="stylesheet" href="../../CSS/background.css">
+    <style><?php require "../../CSS/main.css"; ?></style>
 </head>
 <body>
     <!-- Navbar -->
@@ -24,15 +25,14 @@
                         <a class="nav-link" href="inputStatsPage.php">Input Data</a>
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signUpPage.php">Sign up</a>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logInPage.php">Log in</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <?php require_once "inputStats.php" ?>
+
     <!-- Bootstrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
