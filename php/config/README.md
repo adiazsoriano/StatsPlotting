@@ -16,6 +16,8 @@ DEFINE('db_name', 'database-name-here');
 Inside this file, you'll need the following:
 ```php
 <?php
+require_once "config.php";
+
 echo "Welcome to the connection system.";
 
 $connect = mysqli_connect(db_host, db_user, db_password, db_name);
