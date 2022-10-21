@@ -3,3 +3,6 @@
 
 #local input files
 php/page/uploads/
+
+#sensitive config info
+php/config/config.php
