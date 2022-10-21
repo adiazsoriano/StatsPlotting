@@ -22,7 +22,7 @@ echo "Welcome to the connection system.";
 
 $connect = mysqli_connect(db_host, db_user, db_password, db_name);
 
-if($connection->connect_errno) {
+if($connect->connect_errno) {
     echo "There was an issue connecting to the database.";
     die();
 } else {
