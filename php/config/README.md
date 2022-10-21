@@ -1,6 +1,6 @@
 # Config
 This is the information needed to connect to a local database.
---
+
 ## config.php
 Inside this file, you'll need the following:
 ```php
