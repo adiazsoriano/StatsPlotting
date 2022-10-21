@@ -1,0 +1,5 @@
+#house keeping
+.DS_Store
+
+#local input files
+php/page/uploads/
