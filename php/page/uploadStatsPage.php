@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Stats Visualization</title>
     <link rel="stylesheet" href="../../CSS/background.css">
+    <link rel="stylesheet" href="../../CSS/uploadStatsPage.css">
+    <script src="../../script/plot.js"></script>
+    <style>
+        <?php require "../../CSS/main.css"; ?>
+    </style>
 </head>
 
 <body>
@@ -34,11 +39,14 @@
         </div>
     </nav>
 
-    <!-- uplaod file form -->
-    <form action="uploadStats.php" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file">
-        <button type="submit" name="submit">UPLOAD</button>
-    </form>
+    <?php require_once "uploadStats.php" ?>
+    <!-- <div class="uploadForm">
+        uplaod file form
+        <form action="uploadStats.php" method="POST" enctype="multipart/form-data" onsubmit="return notifyUser()">
+            <input type="file" name="file">
+            <button class="btn btn-primary" type="submit" name="submit">UPLOAD</button>
+        </form>
+    </div> -->
     <!-- Bootstrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
