@@ -11,7 +11,9 @@ DEFINE('db_host', 'database-host-here'); //localhost is used if it's a local dat
 DEFINE('db_name', 'database-name-here');
 ?>
 ```
-**
+
+***
+
 ## connection.php
 Inside this file, you'll need the following:
 ```php
