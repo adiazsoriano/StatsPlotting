@@ -5,10 +5,13 @@ This is the information needed to connect to a local database.
 Inside this file, you'll need the following:
 ```php
 <?php
-DEFINE('db_user', 'database-username-here');
-DEFINE('db_password', 'database-password-here');
-DEFINE('db_host', 'database-host-here'); //localhost is used if it's a local database.
-DEFINE('db_name', 'database-name-here');
+DEFINE('db_type', 'database-type'); //usually 'mysql'
+DEFINE('db_server', 'database-host'); //localhost if local
+DEFINE('db_database', 'database-name');
+DEFINE('db_port','database-port');
+DEFINE('db_charset','utf8mb4'); //or any 'database-charset'
+DEFINE('db_user', 'database-username');
+DEFINE('db_pass', 'database-password');
 ?>
 ```
 
@@ -18,18 +21,29 @@ DEFINE('db_name', 'database-name-here');
 Inside this file, you'll need the following:
 ```php
 <?php
-require_once "config.php";
+require "config.php";
 
-echo "Welcome to the connection system.";
+$options = array(PDO::ATTR_ERRMODE  => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, PDO::ATTR_EMULATE_PREPARES => false);
 
-$connect = mysqli_connect(db_host, db_user, db_password, db_name);
+$pdo;
+$dsn = db_type.":host=".db_server.";dbname=".db_database.";port=".db_port.";charset=".db_charset; 
 
-if($connect->connect_errno) {
-    echo "There was an issue connecting to the database.";
-    die();
-} else {
-    //code and queries go here.
-}
+try {
+    $pdo = new PDO($dsn, db_user, db_pass, $options);
+} catch (PDOException $e) {
+    echo "Connection has failed.\n";
+    echo $e->getMessage();
+    $pdo = null;
+} 
+?>
+```
 
+## otherfile.php
+Inside this file, you'll need the following:
+```php
+<?php
+require "connection.php";
+
+//Other code here.
 ?>
 ```
