@@ -1,0 +1,25 @@
+/* @import url('https://fonts.googleapis.com/css?family=Titillium+Web'); */
+html, body{
+    /* background-color: rgba(160, 116, 66, 0.8); */
+    /* font-family: 'Titillium Web', sans-serif; */
+}
+
+.login-box{
+    max-width: 700px;
+    float: none;
+    margin: 150px auto;
+}
+.login-left{
+    background: rgba(211, 211, 211, 0.5);
+    padding: 30px;
+}
+
+.login-right{
+    background: rgba(125, 125, 125, 0.5);
+    padding: 30px;
+}
+
+.form-control{
+    background-color: transparent !important;
+}
+

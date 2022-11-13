@@ -26,6 +26,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./php/page/databaseStatsPage.php">Database Data</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./php/page/login.php">Log In</a>
+                    </li>
                 </ul>
             </div>
         </div>
