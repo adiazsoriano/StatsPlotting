@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_SESSION["logintoken"])) {
+    header("Location: databaseStatsPage.php");
+    exit();
+}   
 ?>
 
 <html>
@@ -15,10 +19,6 @@ session_start();
         if(isset($_SESSION["message"])) {
             echo "alert('" . $_SESSION["message"] . "');";
             unset($_SESSION["message"]);
-        }
-        if(isset($_SESSION["logintoken"])) {
-            header("Location: databaseStatsPage.php");
-            exit();
         }
         ?>
     </script>

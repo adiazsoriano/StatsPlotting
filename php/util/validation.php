@@ -14,18 +14,14 @@ if(isset($_POST["user"]) && isset($_POST["password"])) {
         $password == hash("sha256",$_POST["password"])) {
         
         $_SESSION["logintoken"] = uniqid("",true);
-        $_SESSION["message"] = "Successfully logged in.";
-        header("Location: ../page/account.php");
-        exit();
     } else {
         $_SESSION["message"] = "Please make sure the following fields are correct.";
-        header("Location: ../page/account.php");
-        exit();
     }
 
 } else {
     $_SESSION["message"] = "Make sure all fields are filled before entering.";
-    header("Location: ../page/account.php");
-    exit();
 }
+
+header("Location: ../page/account.php");
+exit();
 ?>
