@@ -3,9 +3,9 @@ CREATE DATABASE IF NOT EXISTS statsdb;
 USE statsdb;
 
 CREATE TABLE Users
-(Username VARCHAR(30),
+(Username VARCHAR(64),
 Name VARCHAR(30),
-Password VARCHAR(30),
+Password VARCHAR(64),
 CONSTRAINT pk_Username PRIMARY KEY (Username)
 );
 
