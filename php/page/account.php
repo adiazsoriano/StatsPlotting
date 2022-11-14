@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>HW8</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../../CSS/background.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
