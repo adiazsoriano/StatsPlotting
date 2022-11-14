@@ -4,15 +4,15 @@ USE statsdb;
 
 CREATE TABLE Users
 (Username VARCHAR(64),
-Name VARCHAR(30),
+Name VARCHAR(64),
 Password VARCHAR(64),
 CONSTRAINT pk_Username PRIMARY KEY (Username)
 );
 
 CREATE TABLE Uploads
 (fID INT(10) AUTO_INCREMENT,
-Username VARCHAR(30),
-Filename VARCHAR(30),
+Username VARCHAR(64),
+Filename VARCHAR(64),
 File LONGBLOB,
 CONSTRAINT PK_fID PRIMARY KEY (fID),
 CONSTRAINT FK_Username FOREIGN KEY (Username)
