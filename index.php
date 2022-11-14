@@ -24,9 +24,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./php/page/uploadStatsPage.php">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="./php/page/databaseStatsPage.php">Database Data</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="./php/page/account.php">Log In</a>
                     </li>
                 </ul>
@@ -38,7 +35,7 @@
         <h1>Stats Visualization</h1>
         <a href="./php/page/inputStatsPage.php" class="btn btn-primary">Input Stats</a>
         <a href="./php/page/uploadStatsPage.php" class="btn btn-primary">Upload Stats</a>
-        <a href="./php/page/databaseStatsPage.php" class="btn btn-primary">Database Stats</a>
+        <a href="./php/page/account.php" class="btn btn-primary">Database Stats</a>
     </div>
     <!-- Bootstrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

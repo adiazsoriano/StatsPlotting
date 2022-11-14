@@ -1,11 +1,27 @@
-<html>
+<?php
+session_start();
+?>
 
+<html>
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="../../CSS/background.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/login.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="../../script/validation.js"></script>
+    <script>
+        <?php
+        if(isset($_SESSION["message"])) {
+            echo "alert('" . $_SESSION["message"] . "');";
+            unset($_SESSION["message"]);
+        }
+        if(isset($_SESSION["logintoken"])) {
+            header("Location: databaseStatsPage.php");
+            exit();
+        }
+        ?>
+    </script>
 </head>
 
 <body>
@@ -25,9 +41,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="databaseStatsPage.php">Database Data</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="account.php">Account</a>
                     </li>
                 </ul>
@@ -40,28 +53,42 @@
             <div class="row">
                 <div class="col-md-6 login-left">
                     <h2> Login Here </h2>
-                    <form action="validation.php" method="post">
+                    <form action="../util/validation.php" method="post">
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" name="user" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input id="loginpass" type="password" name="password" class="form-control" required>
+                            <label>Show Password</label>
+                            <input type="checkbox" onclick="showPassword('loginpass')">
                         </div>
                         <button type="submit" class="btn btn-primary">Login</button>
                     </form>
                 </div>
                 <div class="col-md-6 login-right">
                     <h2> Register here </h2>
-                    <form action="registration.php" method="post">
+                    <form action="../util/registration.php" method="post">
                         <div class="form-group">
                             <label>Username</label>
                             <input type="text" name="user" class="form-control" required>
                         </div>
                         <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" class="form-control" required>
+                            <input id="password" type="password" name="password" class="form-control" required>
+                            <label>Show Password</label>
+                            <input type="checkbox" onclick="showPassword('password')">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input id="confirm" type="password" name="password" class="form-control" oninput="confirmPassword()" required>
+                            <label>Show Confirm Password</label>
+                            <input type="checkbox" onclick="showPassword('confirm')">
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>

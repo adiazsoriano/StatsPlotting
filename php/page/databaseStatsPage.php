@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION["logintoken"])) {
+    header("Location: account.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +23,7 @@
     <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="../../../index.html">Home</a>
+            <a class="navbar-brand" href="../../index.php">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -27,10 +35,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="databaseStatsPage.php">Database Data</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="account.php">Account</a>
+                        <a class="nav-link" href="../util/logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
