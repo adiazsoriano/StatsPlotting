@@ -2,6 +2,12 @@
 session_start();
 require "../config/connection.php";
 
+if(empty($_POST["user"]) || empty($_POST["name"]) || empty($_POST["password"])) {
+    $_SESSION["message"] = "Make sure to complete all fields.";
+    header("Location: ../page/account.php");
+    exit();
+}
+
 $user = $_POST["user"];
 $name = $_POST["name"];
 $pass = hash("sha256",$_POST["password"]);
