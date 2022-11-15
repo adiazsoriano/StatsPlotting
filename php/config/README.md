@@ -8,7 +8,7 @@ Inside this file, you'll need the following:
 DEFINE('db_type', 'database-type'); //usually 'mysql'
 DEFINE('db_server', 'database-host'); //localhost if local
 DEFINE('db_database', 'database-name');
-DEFINE('db_port','database-port');
+DEFINE('db_port','database-port'); //default is 3306
 DEFINE('db_charset','utf8mb4'); //or any 'database-charset'
 DEFINE('db_user', 'database-username');
 DEFINE('db_pass', 'database-password');
