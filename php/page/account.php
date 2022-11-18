@@ -71,7 +71,7 @@ if(isset($_SESSION["logintoken"])) {
                     </form>
                 </div>
                 <div class="col-md-6 login-right">
-                    <h2> Register here </h2>
+                    <h2> Register Here </h2>
                     <form action="../util/registration.php" method="post">
                         <div class="form-group">
                             <label>Username</label>
