@@ -1,0 +1,19 @@
+.uploadForm {
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.dbfiles {
+    margin-top: 5vh;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    max-width: 1000px;
+    float: none;
+    margin: 100px auto;
+}
+
+.filetable {
+    min-width: auto;
+    margin: 0 auto;
+    width: 40%;
+}

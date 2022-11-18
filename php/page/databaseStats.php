@@ -77,12 +77,16 @@ try {
     </head>
     <body onload="return initView()">
         <div <?=isset($_POST["graph"]) ? "class='graphdiv'" : "";?> id="graph"></div>
-        <form method="POST"><div id="files"></div></form>
+        <div class="uploadForm">
+            <form action="../util/uploadDB.php" enctype="multipart/form-data" method="POST">
+                <label>Upload a file (.txt,.csv):</label>
+                <input type="file" name="file">
+                <button class="btn btn-primary" type="submit" name="submit" value="submit">UPLOAD</button>
+            </form>
+        </div>
         <hr>
-        <form action="../util/uploadDB.php" enctype="multipart/form-data" method="POST">
-            <label>Upload a file (.txt,.csv):</label>
-            <input type="file" name="file">
-            <button class="btn btn-primary" type="submit" name="submit" value="submit">UPLOAD</button>
-        </form>
+        <div class="dbfiles">
+            <form method="POST"><div class="filetable" id="files"></div></form>
+        </div>
     </body>
 </html>

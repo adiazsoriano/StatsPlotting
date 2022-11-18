@@ -11,7 +11,3 @@ function drawGraph() {
     var data = [trace];
     Plotly.newPlot('graph',data);
 }
-
-function notifyUser() {
-    alert("Generating Graph . . .");
-}

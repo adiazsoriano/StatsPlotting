@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     </div>
     <div class="uploadForm">
         <!-- uplaod file form -->
-        <form method="POST" enctype="multipart/form-data" onsubmit="return notifyUser()">
+        <form method="POST" enctype="multipart/form-data">
             <input type="file" name="file">
             <button class="btn btn-primary" type="submit" name="submit" value="submit">UPLOAD</button>
         </form>

@@ -1,6 +1,5 @@
-.graphdiv{
-    background: rgba(150,150,150,0.3);
-    outline: 5px solid black;
+.inputdiv {
+    background: rgba(200, 200, 200, 0.5);
     border-radius: 2px;
     padding: 10px;
     margin: 100px;

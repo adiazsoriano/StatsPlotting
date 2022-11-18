@@ -4,11 +4,15 @@ function showFiles(divID, dbinfo) {
     div.innerHTML += "<table id='filetable'></table>";
     var filediv = document.getElementById("filetable");
 
-    filediv.innerHTML += "<tr>" +
+    if(dbinfo.length > 0) {
+        filediv.innerHTML += "<tr>" +
                 "<th>File</th>" +
                 "<th>Download</th>" +
                 "<th>Graph</th>" +
                 "</tr>";
+    } else {
+        filediv.innerHTML += "<p>There are no files in the system, please upload something!</p>";
+    }
 
     for(let i = 0; i < dbinfo.length; i++) {
         filediv.innerHTML += "<tr>" +

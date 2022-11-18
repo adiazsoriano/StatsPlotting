@@ -3,17 +3,22 @@ session_start();
 require "../config/connection.php";
 
 if(isset($_POST["user"]) && isset($_POST["password"])) {
-    $query = "SELECT Username, Password FROM Users;";
-    $statement = $pdo->query($query);
-    $fetch = $statement->fetch();
+    $query = "SELECT Username, Password FROM Users WHERE Username = :Username AND Password = :Password;";
+    $args = array("Username" => $_POST["user"], "Password" => hash("sha256",$_POST["password"]));
 
-    $user = $fetch["Username"];
-    $password = $fetch["Password"];
+    $userinfo;
+    try {
+        $statement = $pdo->prepare($query);
+        $statement->execute($args);
+        $userinfo = $statement->fetch();
+    } catch (PDOException $e) {
+        $_SESSION["message"] = "An error occured, please try again.";
+        $userinfo = null;
+    }
 
-    if($user == $_POST["user"] && 
-        $password == hash("sha256",$_POST["password"])) {
+    if($userinfo != null && !empty($userinfo)) {
         
-        $_SESSION["logintoken"] = $user;
+        $_SESSION["logintoken"] = $userinfo["Username"];
     } else {
         $_SESSION["message"] = "Please make sure the following fields are correct.";
     }

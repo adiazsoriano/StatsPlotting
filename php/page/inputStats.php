@@ -26,7 +26,7 @@ require_once "../util/calculations.php";
     <body <?php if(!empty($_POST["compute"])) {echo "onload='return drawGraph()'";}?>>
         <div <?php if(!empty($_POST["compute"])) {echo "class='graphdiv' id='graph'";} ?>></div>
         <div class="inputdiv">
-            <form method="POST" onsubmit="return notifyUser()">
+            <form method="POST">
                 <fieldset>
                     <legend>Enter your numbers.</legend>
 
