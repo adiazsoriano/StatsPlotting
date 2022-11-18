@@ -60,9 +60,8 @@ try {
                     }
                     fclose($handle);
                     
-                    $_SESSION["download"] = $file;
+                    $_SESSION["download"] = "./downloads/".$file;
                     header("Location: ./downloads/download.php");
-                    exit();
                 }
             }
             ?>
