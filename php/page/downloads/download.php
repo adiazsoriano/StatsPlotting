@@ -11,10 +11,11 @@ if(isset($_SESSION["download"]) && is_readable(basename($_SESSION["download"])))
 
     $handle = fopen($file,"rb");
     echo fread($handle,filesize($file));
-    fclose($handle);
     ob_flush();
     flush(); 
 
+    fclose($handle);
     unset($_SESSION["download"]);
 }
+exit();
 ?>
