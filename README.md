@@ -1,6 +1,7 @@
 # StatsPlotting
 A stats calculator visualization.
----
+
+
 ## Installation Instructions
 Getting started with our webpage.
 
