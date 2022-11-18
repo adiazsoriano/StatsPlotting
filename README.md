@@ -13,4 +13,4 @@ $>git clone https://github.com/adiazsoriano/StatsPlotting.git
 
 ### Initializing Database
 In order to use this webpage, the database must be initialized.
-[Go here for instructions.](./sql/README.md)
+[Go here for instructions.](./sql/)
