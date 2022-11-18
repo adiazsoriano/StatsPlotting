@@ -3,6 +3,11 @@ session_start();
 require "../util/calculations.php";
 require "../config/connection.php";
 
+if(!isset($_SESSION["logintoken"])) {
+    header("Location: account.php");
+    exit();
+}
+
 $query = "SELECT Filename FROM Uploads WHERE Username = :Username;";
 $cat = array("Username" => $_SESSION["logintoken"]);
 try {
