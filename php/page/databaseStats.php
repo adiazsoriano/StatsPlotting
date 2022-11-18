@@ -50,6 +50,13 @@ try {
                 }
                 if($packedfile != null && isset($_POST["graph"])) {
                     echo "var x =" . unpacktoJSArr(unpack("I*",$packedfile["File"])) . ";\n";
+                    $data = unpack("I*",$packedfile["File"]);
+                    echo "var title = 'Mean: " . sprintf("%.2f",findAverage($data))  .
+                            "  -  Median: " . findMedian($data). "<br>" .
+                            "Mode: " . findMode($data). "<br>" .
+                            "Range: " . findRange($data).
+                            "  -  Population Standard Deviation: " . sprintf("%.2f",findStandardDeviation($data)).
+                            "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'";
                 }
                 if($packedfile != null && isset($_POST["download"])) {
                     $file = uniqid('', true) . '.txt';

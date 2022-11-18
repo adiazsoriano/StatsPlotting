@@ -7,6 +7,19 @@ require_once "../util/calculations.php";
         <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
         <script>
             var x = <?php echo !empty($_POST["compute"]) ? toJSArr($_POST["numList"]) : "[]";  ?>;
+            var title = <?php
+                        if(isset($_POST["compute"])) {
+                            $data = toArr($_POST["numList"]);
+                            echo "'Mean: " .  sprintf("%.2f",findAverage($data)) .
+                                    "  -  Median: " . findMedian($data). "<br>" .
+                                    "Mode: " . findMode($data). "<br>" .
+                                    "Range: " . findRange($data).
+                                    "  -  Population Standard Deviation: " . sprintf("%.2f",findStandardDeviation($data)).
+                                    "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'";
+                        } else {
+                            echo "'';";
+                        }
+                        ?>;
 
             function validatenum() {
                 var input = document.getElementById("input");
@@ -23,7 +36,7 @@ require_once "../util/calculations.php";
         </script>
         <script src="../../script/plot.js"></script>
     </head>
-    <body <?php if(!empty($_POST["compute"])) {echo "onload='return drawGraph()'";}?>>
+    <body>
         <div <?php if(!empty($_POST["compute"])) {echo "class='graphdiv' id='graph'";} ?>></div>
         <div id="inputdiv" class="inputdiv">
             <form method="POST">

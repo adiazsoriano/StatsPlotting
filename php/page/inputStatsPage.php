@@ -19,7 +19,8 @@ session_start()
     </style>
     <script>
          function scrollView() {
-            document.getElementById("inputdiv").scrollIntoView({behavior: "smooth",block: "end"});
+            document.getElementById(<?=isset($_POST["compute"]) ? "'graph'":"'inputdiv'";?>).scrollIntoView({behavior: "smooth",block: "end"});
+            <?php if(!empty($_POST["compute"])) {echo  "drawGraph();";}?>
         }
     </script>
 </head>

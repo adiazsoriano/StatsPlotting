@@ -38,7 +38,7 @@ function findMode(array $array) {
 
     foreach ($countArr as $key => $value) {
         if ($value > 1) {
-            $modeString = $modeString . $key . ", ";
+            $modeString = $modeString . trim($key) . ", ";
         }
     }
 
@@ -92,6 +92,18 @@ function toJSArr(string $list) : string {
     }
 
     return $nList . "]";
+}
+
+function toArr(string $list) : array {
+    $list = trim($list);
+    $expList = explode(" ", $list);
+    $nList = array();
+
+    for($i = 0; $i < count($expList); $i++) {
+        array_push($nList,floatval($expList[$i]));
+    }
+
+    return $nList;
 }
 
 function unpacktoJSArr(array $array) : string{
