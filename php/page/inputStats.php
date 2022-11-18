@@ -10,14 +10,15 @@ require_once "../util/calculations.php";
             var title = <?php
                         if(isset($_POST["compute"])) {
                             $data = toArr($_POST["numList"]);
-                            echo "'Mean: " .  sprintf("%.2f",findAverage($data)) .
+                            echo !empty($_POST["numList"]) ? "'Mean: " .  sprintf("%.2f",findAverage($data)) .
                                     "  -  Median: " . findMedian($data). "<br>" .
                                     "Mode: " . findMode($data). "<br>" .
                                     "Range: " . findRange($data).
                                     "  -  Population Standard Deviation: " . sprintf("%.2f",findStandardDeviation($data)).
-                                    "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'";
+                                    "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'"
+                                    : "'No data to show.'";
                         } else {
-                            echo "'';";
+                            echo "'No data to show.'";
                         }
                         ?>;
 

@@ -55,15 +55,16 @@ if (isset($_POST['submit'])) {
         var x = <?php echo json_encode($array); ?>;
         var title = <?php
                         if(isset($_POST["submit"])) {
-                            $data = $array ? $array : array();
-                            echo "'Mean: " . sprintf("%.2f",findAverage($data))  .
+                            $data = $array ? $array : null;
+                            echo $data != null ? "'Mean: " . sprintf("%.2f",findAverage($data))  .
                                     "  -  Median: " . findMedian($data). "<br>" .
                                     "Mode: " . findMode($data). "<br>" .
                                     "Range: " . findRange($data).
                                     "  -  Population Standard Deviation: " . sprintf("%.2f",findStandardDeviation($data)).
-                                    "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'";
+                                    "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'"
+                                    : "'No data to show.'";
                         } else {
-                            echo "'';";
+                            echo "'No data to show.'";
                         }
                         ?>;
     </script>

@@ -11,6 +11,13 @@ if(isset($_POST["submit"])) {
     $allowed = array("txt", "csv");
 
     if(in_array($fileActualExt,$allowed)) {
+
+        if(filesize($file["tmp_name"]) <= 0) {
+            $_SESSION["message"] = "Please do not submit empty files!";
+            header("Location: ../page/databaseStatsPage.php");
+            exit();
+        }
+
         $handle = fopen($file["tmp_name"], "rb");
 
         $filecontent;
