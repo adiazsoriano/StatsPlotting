@@ -21,10 +21,13 @@ if(isset($_SESSION["logintoken"])) {
             unset($_SESSION["message"]);
         }
         ?>
+        function scrollView() {
+            document.getElementById("login-box").scrollIntoView({behavior: "smooth",block: "center"});
+        }
     </script>
 </head>
 
-<body>
+<body onload="scrollView();">
 
     <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg bg-dark">
@@ -41,7 +44,7 @@ if(isset($_SESSION["logintoken"])) {
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="account.php">Account</a>
+                        <a class="nav-link" style="color:white;">Account</a>
                     </li>
                 </ul>
             </div>
@@ -49,7 +52,7 @@ if(isset($_SESSION["logintoken"])) {
     </nav>
 
     <div class="container">
-        <div class="login-box">
+        <div id="login-box" class="login-box">
             <div class="row">
                 <div class="col-md-6 login-left">
                     <h2> Login Here </h2>

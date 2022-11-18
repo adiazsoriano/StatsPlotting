@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,9 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="inputStatsPage.php">Input Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
+                        <a class="nav-link" style="color:white;">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="account.php">Account</a>
+                        <a class="nav-link" href="account.php"><?=isset($_SESSION["logintoken"]) ? "Account" : "Log In";?></a>
                     </li>
                 </ul>
             </div>
@@ -40,13 +44,7 @@
     </nav>
 
     <?php require_once "uploadStats.php" ?>
-    <!-- <div class="uploadForm">
-        uplaod file form
-        <form action="uploadStats.php" method="POST" enctype="multipart/form-data" onsubmit="return notifyUser()">
-            <input type="file" name="file">
-            <button class="btn btn-primary" type="submit" name="submit">UPLOAD</button>
-        </form>
-    </div> -->
+    
     <!-- Bootstrap scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "../util/calculations.php";
 
 //check submitted file
@@ -24,16 +24,14 @@ if (isset($_POST['submit'])) {
                 $fileDestination = 'uploads/' . $fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $array = file($fileDestination, FILE_SKIP_EMPTY_LINES);
-                //print_r($array);
-                //header("Location: ../../index.php?uploadsuccess");
             } else {
-                echo "Your file is too big!";
+                $_SESSION["message"] = "Your file is too big!";
             }
         } else {
-            echo "There was an error uploading your file!";
+            $_SESSION["message"] = "There was an error uploading your file!";
         }
     } else {
-        echo "you cannot upload files of this type!";
+        $_SESSION["message"] = "you cannot upload files of this type!";
     }
 } //if statement (check submitted file)
 ?>
@@ -48,6 +46,12 @@ if (isset($_POST['submit'])) {
     <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
     <script src="../../script/plot.js"></script>
     <script>
+        <?php
+        if(isset($_SESSION["message"])) {
+            echo "alert('" . $_SESSION["message"] . "');";
+            unset($_SESSION["message"]);
+        }
+        ?>
         var x = <?php echo json_encode($array); ?>
     </script>
 </head>

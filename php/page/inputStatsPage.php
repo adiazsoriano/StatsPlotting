@@ -1,3 +1,7 @@
+<?php
+session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,9 +17,14 @@
     <style>
         <?php require "../../CSS/main.css"; ?>
     </style>
+    <script>
+         function scrollView() {
+            document.getElementById("inputdiv").scrollIntoView({behavior: "smooth",block: "end"});
+        }
+    </script>
 </head>
 
-<body>
+<body onload="scrollView();">
     <!-- Navbar -->
     <nav class="navbar sticky-top navbar-expand-lg bg-dark">
         <div class="container">
@@ -27,11 +36,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto w-100 justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="inputStatsPage.php">Input Data</a>
+                        <a class="nav-link" style="color:white;">Input Data</a>
                     <li class="nav-item">
                         <a class="nav-link" href="uploadStatsPage.php">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="account.php">Account</a>
+                        <a class="nav-link" href="account.php"><?=isset($_SESSION["logintoken"]) ? "Account" : "Log In";?></a>
                     </li>
                 </ul>
             </div>
