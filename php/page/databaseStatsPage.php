@@ -17,6 +17,9 @@ if (!isset($_SESSION["logintoken"])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Stats Visualization</title>
     <link rel="stylesheet" href="../../CSS/background.css">
+    <style>
+        <?php require "../../CSS/main.css"; ?>
+    </style>
 </head>
 
 <body>

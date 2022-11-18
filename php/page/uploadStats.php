@@ -1,10 +1,6 @@
 <?php
-session_start();
-require "../config/connection.php";
-require_once "../util/calculations.php";
 
-// $username = $_POST["user"];
-$username = "test";
+require_once "../util/calculations.php";
 
 //check submitted file
 if (isset($_POST['submit'])) {
@@ -25,25 +21,9 @@ if (isset($_POST['submit'])) {
         if ($fileError === 0) {
             if ($fileSize < 1000000) {
                 $fileNameNew = uniqid('', true) . "." . $fileActualExt;
-                $fileDestination = './uploads/' . $fileNameNew;
+                $fileDestination = 'uploads/' . $fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $array = file($fileDestination, FILE_SKIP_EMPTY_LINES);
-                echo var_dump($array);
-                $fileData = file_get_contents($fileDestination, TRUE, NULL, 0, 60000);
-
-                $query = "INSERT INTO Uploads(Username, Filename, File) VALUES(:Username, :Filename,:File);";
-                $cat = array("Username" => $username, "Filename" => $fileName, "File" => $fileData);
-                try {
-                    $pdo->beginTransaction();
-                    $statement = $pdo->prepare($query);
-                    $statement->execute($cat);
-                    $pdo->commit();
-                    $_SESSION["message"] = "File successfully uploaded to DB";
-                } catch (PDOException $e) {
-                    $pdo->rollback();
-                    $_SESSION["message"] = "Failed to upload file to DB";
-                }
-
                 //print_r($array);
                 //header("Location: ../../index.php?uploadsuccess");
             } else {

@@ -94,4 +94,19 @@ function toJSArr(string $list) : string {
     return $nList . "]";
 }
 
+function unpacktoJSArr(array $array) : string{
+    $list = "[";
+    $i = 0;
+    foreach($array as $key => $value) {
+        $list .= $value;
+        if($i < count($array)-1) {
+            $list .= ",";
+        }
+
+        $i++;
+    }
+
+    return $list . "]";
+}
+
 ?>

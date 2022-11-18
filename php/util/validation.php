@@ -13,7 +13,7 @@ if(isset($_POST["user"]) && isset($_POST["password"])) {
     if($user == $_POST["user"] && 
         $password == hash("sha256",$_POST["password"])) {
         
-        $_SESSION["logintoken"] = uniqid("",true);
+        $_SESSION["logintoken"] = $user;
     } else {
         $_SESSION["message"] = "Please make sure the following fields are correct.";
     }

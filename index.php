@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +28,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="./php/page/uploadStatsPage.php">Upload Data</a>
                     <li class="nav-item">
-                        <a class="nav-link" href="./php/page/account.php">Log In</a>
+                        <a class="nav-link" href="./php/page/account.php"><?=isset($_SESSION["logintoken"]) ? "Account" : "Log In";?></a>
                     </li>
                 </ul>
             </div>

@@ -1,69 +1,89 @@
-<?php
-// session_start();
-require_once "../util/calculations.php";
+<?php 
+session_start();
+require "../util/calculations.php";
 require "../config/connection.php";
 
+$query = "SELECT Filename FROM Uploads WHERE Username = :Username;";
+$cat = array("Username" => $_SESSION["logintoken"]);
+try {
+    $statement = $pdo->prepare($query);
+    $statement->execute($cat);
+    $dbinfo = $statement->fetchAll();
+} catch (PDOException $e) {
+    unset($_SESSION["logintoken"]);
+    $_SESSION["message"] = "There was an error, you have been logged out.";
 
-//get num of rows from DB
-$q1 = "SELECT COUNT(*) FROM Uploads WHERE username = 'test'";
-$rCount = $pdo->query("SELECT COUNT(*) FROM Uploads WHERE username = 'test'")->fetchColumn();
-echo $rCount;
-
-//get files from db
-$i = 0;
-while ($i < $rCount) {
-    $q2 = "SELECT file FROM Uploads WHERE username = 'test'";
-    $sth = $pdo->prepare($q2);
-    $sth->execute();
-    $resArr = $sth->fetchAll(\PDO::FETCH_ASSOC);
-
-    $i++;
+    header("Location: account.php");
+    exit();
 }
-print_r($resArr);
-echo "<br>";
-echo "<br>";
-$str = $resArr[1]['file'];
-echo "str: " . var_dump($str);
-$file = uniqid('', true) . '.txt';
-file_put_contents('./downloads/' . $file, $str);
-$arrX = file('./downloads/' . $file, FILE_SKIP_EMPTY_LINES);
-echo "<br>";
-echo "<br>";
-var_dump($arrX);
-
-/* $query = "SELECT * FROM Uploads";
-$s1 = $pdo->query($query);
-$table = $s1->fetchAll();
-
-
-echo json_encode(unpack("I*", $table[0]["File"])) . "\n";
-echo json_encode(unpack("I*", $table[1]["File"])) . "\n"; */
-
 
 ?>
-<!DOCTYPE html>
+
 <html>
+    <head>
+        <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+        <script>
+            var uploads = <?=json_encode($dbinfo);?>;
+            <?php
+            if(isset($_SESSION["message"])) {
+                echo "alert('" . $_SESSION["message"] . "');";
+                unset($_SESSION["message"]);
+            }
+            if(isset($_POST["graph"]) || isset($_POST["download"])) {
+                $packedfile;
+                try {
+                    $query = "SELECT File FROM Uploads WHERE Username = :Username AND Filename = :Filename;";
+                    $args = array("Username" => $_SESSION["logintoken"]);
 
-<head>
-    <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
-    <script src="../../script/plot.js"></script>
-    <script>
-        var x = <?php echo json_encode($arrX); ?>
-        drawGraph();
-    </script>
-</head>
+                    if(isset($_POST["graph"])) {
+                        $args["Filename"] = $_POST["graph"];
+                    }
+                    if(isset($_POST["download"])) {
+                        $args["Filename"] = $_POST["download"];
+                    }
 
-<body <?php if (!empty($resArr)) {
-            echo "onload=' return drawGraph()'";
-        } ?>>
-    <?php if (!empty($resArr)) {
-        while ($i < $rCount) {
-            echo "<div class='graphdiv" . "$i' id='graph" . "$i'></div>";
-        }
-    } ?>
-
-    </div>
-
-</body>
-
+                    $statement = $pdo->prepare($query);
+                    $statement->execute($args);
+                    $packedfile = $statement->fetch();
+                } catch(PDOException $e) {
+                    $packedfile = null;
+                }
+                if($packedfile != null && isset($_POST["graph"])) {
+                    echo "var x =" . unpacktoJSArr(unpack("I*",$packedfile["File"])) . ";\n";
+                }
+                if($packedfile != null && isset($_POST["download"])) {
+                    $file = uniqid('', true) . '.txt';
+                    $handle = fopen("./downloads/" . $file ,"wb");
+                    $rawfile = unpack("I*",$packedfile["File"]);
+                    foreach($rawfile as $value) {
+                        fwrite($handle,$value.PHP_EOL);
+                    }
+                    fclose($handle);
+                    
+                    $_SESSION["download"] = $file;
+                    header("Location: ./downloads/download.php");
+                    exit();
+                }
+            }
+            ?>
+        </script>
+        <script src="../../script/plot.js"></script>
+        <script src="../../script/util.js"></script>
+        <script>
+            function initView() {
+                showFiles('files',uploads);
+                <?=isset($_POST["graph"]) ? "drawGraph();" : "";?>
+            }
+        </script>
+    </head>
+    <body onload="return initView()">
+        <div <?=isset($_POST["graph"]) ? "class='graphdiv'" : "";?> id="graph"></div>
+        <form method="POST"><div id="files"></div></form>
+        <hr>
+        <form action="../util/uploadDB.php" enctype="multipart/form-data" method="POST">
+            <label>Upload a file (.txt,.csv):</label>
+            <input type="file" name="file">
+            <button class="btn btn-primary" type="submit" name="submit" value="submit">UPLOAD</button>
+        </form>
+    </body>
 </html>
