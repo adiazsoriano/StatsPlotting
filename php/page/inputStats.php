@@ -6,17 +6,23 @@ require_once "../util/calculations.php";
     <head>
         <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
         <script>
-            var x = <?php echo !empty($_POST["compute"]) ? toJSArr($_POST["numList"]) : "[]";  ?>;
+            var x = <?php
+                if(isset($_POST["compute"])) {
+                    $jsarr = toJSArr($_POST["numList"]);
+                    echo $jsarr;
+                } else {
+                    echo "[]";
+                }
+            ?>;
             var title = <?php
-                        if(isset($_POST["compute"])) {
+                        if(isset($_POST["compute"]) && !empty($_POST["numList"])) {
                             $data = toArr($_POST["numList"]);
-                            echo !empty($_POST["numList"]) ? "'Mean: " .  sprintf("%.2f",findAverage($data)) .
-                                    "  -  Median: " . findMedian($data). "<br>" .
-                                    "Mode: " . findMode($data). "<br>" .
-                                    "Range: " . findRange($data).
-                                    "  -  Population Standard Deviation: " . sprintf("%.2f",findStandardDeviation($data)).
-                                    "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'"
-                                    : "'No data to show.'";
+                            echo "'Mean: " .  sprintf("%.2f",findAverage($data)) .
+                                 "  -  Median: " . findMedian($data). "<br>" .
+                                 "Mode: " . findMode($data). "<br>" .
+                                 "Range: " . findRange($data).
+                                 "  -  Population Standard Deviation: " . sprintf("%.2f",findStandardDeviation($data)).
+                                 "  -  Sample Standard Deviation: ". sprintf("%.2f",findStandardDeviation($data,true)) . "'";
                         } else {
                             echo "'No data to show.'";
                         }

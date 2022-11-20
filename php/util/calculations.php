@@ -62,8 +62,12 @@ function findRange(array $array) {
 }
 
 function findStandardDeviation(array $numbers, bool $isSampleSD = false) {
+    if($isSampleSD && count($numbers) <= 1) {
+        return 0;
+    }
     $mean = findAverage($numbers);
     $sum = 0;
+    
 
     for ($i = 0; $i < count($numbers); $i++) {
         $delta = abs($numbers[$i] - $mean);
