@@ -51,10 +51,10 @@ require_once "../util/calculations.php";
                     <legend>Enter your numbers.</legend>
 
                     <div> 
-                        <textarea id="numList" name="numList" rows="20" cols="75" readonly></textarea>
+                        <textarea class="form-control" id="numList" name="numList" rows="15" cols="75" readonly></textarea>
                         <br>
                         <label>Enter:</label>
-                        <input id="input" type="text" placeholder="Enter numbers here.">
+                        <input class="form-control" id="input" type="text" placeholder="Enter numbers here.">
                         <button id="addnum" type="button" onclick="validatenum()">Enter.</button>
                     </div>
 
