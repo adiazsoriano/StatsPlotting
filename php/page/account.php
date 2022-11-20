@@ -83,7 +83,7 @@ if(isset($_SESSION["logintoken"])) {
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input id="password" type="password" name="password" class="form-control" required>
+                            <input id="password" type="password" name="password" class="form-control" oninput="confirmPassword()" required>
                             <label>Show Password</label>
                             <input type="checkbox" onclick="showPassword('password')">
                         </div>
