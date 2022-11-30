@@ -1,6 +1,9 @@
 # StatsPlotting
 A stats calculator visualization.
-
+__Team Members__
+Angel Diaz-Soriano
+Dylan Hall
+Joseba Incera
 
 ## Installation Instructions
 Getting started with our webpage.
