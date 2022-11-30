@@ -2,8 +2,8 @@
 A stats calculator visualization.
 
 __Team Members__
-Angel Diaz-Soriano
-Dylan Hall
+Angel Diaz-Soriano,
+Dylan Hall, &
 Joseba Incera
 
 ## Installation Instructions
