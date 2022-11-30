@@ -1,5 +1,6 @@
 # StatsPlotting
 A stats calculator visualization.
+
 __Team Members__
 Angel Diaz-Soriano
 Dylan Hall
