@@ -14,6 +14,7 @@ session_start()
     <title>Stats Visualization</title>
     <link rel="stylesheet" href="../../CSS/background.css">
     <link rel="stylesheet" href="../../CSS/input.css">
+    <link rel="icon" type="image/png" href="favicon.png">
     <style>
         <?php require "../../CSS/main.css"; ?>
     </style>
